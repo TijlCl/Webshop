@@ -1,9 +1,11 @@
-body {
-  margin: 0;
-  padding: 50px;
-  background-color: black;
-}
+@import "index";
+@import "navbar";
+@import "table";
 
-h1 {
-  background-color: white;
+.banner {
+  background-image: url("../img/banner.jpg");
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position-y: -550px;
+  height: 200px;
 }

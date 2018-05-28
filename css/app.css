@@ -1,11 +1,50 @@
-body {
+.navbar {
+  border: none !important;
+}
+.navbar ul {
+  list-style-type: none;
   margin: 0;
-  padding: 50px;
-  background-color: black;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+.navbar li {
+  float: left;
+}
+.navbar li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+.navbar li a:hover:not(.active) {
+  background-color: #111;
+}
+.navbar .active {
+  background-color: #4CAF50;
 }
 
-h1 {
-  background-color: white;
+.table table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.table td, .table th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.table tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.banner {
+  background-image: url("../img/banner.jpg");
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-position-y: -550px;
+  height: 200px;
 }
 
 /*# sourceMappingURL=css/app.css.map */
