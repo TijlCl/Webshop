@@ -33,6 +33,38 @@
   margin-top: 10px;
 }
 
+.admin table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.admin td, .admin th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.admin tr:nth-child(even) {
+  background-color: #dddddd;
+}
+.admin .finalize {
+  width: 30vw;
+  float: right;
+}
+
+.winkelwagen table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.winkelwagen td, .winkelwagen th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+.winkelwagen tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
 .banner {
   background-image: url("../img/banner.jpg");
   background-size: 100vw;

@@ -15,9 +15,9 @@
     <nav class="navbar">
         <ul>
             <li><a class="active" href="#">Home</a></li>
-            <li><a href="#">Winkelwagen</a></li>
+            <li><a href="winkelwagen.php">Winkelwagen</a></li>
             <li><a href="#">About</a></li>
-            <li><a href="#">Admin</a></li>
+            <li><a href="admin.php">Admin</a></li>
         </ul>
     </nav>
 
