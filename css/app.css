@@ -1,5 +1,6 @@
 .navbar {
   border: none !important;
+  margin-bottom: 50px !important;
 }
 .navbar ul {
   list-style-type: none;
@@ -25,26 +26,23 @@
   background-color: #4CAF50;
 }
 
-.table table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
+.table .card-block {
+  margin-bottom: 40px;
 }
-.table td, .table th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
-.table tr:nth-child(even) {
-  background-color: #dddddd;
+.table p {
+  margin-top: 10px;
 }
 
 .banner {
   background-image: url("../img/banner.jpg");
   background-size: 100vw;
   background-repeat: no-repeat;
-  background-position-y: -550px;
   height: 200px;
+}
+
+.content {
+  width: 80vw;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=css/app.css.map */
