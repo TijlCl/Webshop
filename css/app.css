@@ -84,6 +84,25 @@
   background-color: #dddddd;
 }
 
+.product-toevoegen {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+}
+.product-toevoegen .fields {
+  padding: 50px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.product-toevoegen .fields input {
+  margin-bottom: 20px;
+}
+.product-toevoegen .fields h2 {
+  margin-bottom: 50px;
+}
+.product-toevoegen .fields button {
+  margin-top: 20px;
+}
+
 .banner {
   background-image: url("../img/banner.jpg");
   background-size: 100vw;

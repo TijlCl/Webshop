@@ -42,6 +42,10 @@ class ProductDAO {
         }
     }
 
+    public static function voegToe($product) {
+        return self::getVerbinding()->voerSqlQueryUit("INSERT INTO Product(naam, beschrijving, btwPercentage, prijsExclBtw, locatieFoto) VALUES ('?','?','?','?','?')", array($product->getNaam(), $product->getBeschrijving(), $product->getBtwPercentage(), $product->getPrijsExclBtw(), $product->getLocatieFoto()));
+    }
+
 //    public static function insert($persoon) {
 //        return self::getVerbinding()->voerSqlQueryUit("INSERT INTO Persoon(voornaam, achternaam) VALUES ('?','?')", array($persoon->getVoornaam(), $persoon->getAchternaam()));
 //    }

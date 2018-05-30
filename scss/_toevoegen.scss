@@ -1,0 +1,22 @@
+.product-toevoegen {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
+
+  .fields {
+    padding: 50px;
+    background-color: rgba(255, 255, 255, 0.3);
+
+    input {
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-bottom: 50px;
+    }
+
+    button {
+      margin-top: 20px;
+    }
+  }
+}
