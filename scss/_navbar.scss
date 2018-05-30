@@ -1,10 +1,14 @@
 .navbar {
   border: none !important;
   margin-bottom: 50px !important;
+  position: fixed;
+  top: 0;
+
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
+    padding-left: 10vw;
     overflow: hidden;
     background-color: #333;
   }
@@ -25,7 +29,7 @@
     background-color: #111;
   }
 
-  .active {
-    background-color: #4CAF50;
+  .home {
+    background-color: green;
   }
 }

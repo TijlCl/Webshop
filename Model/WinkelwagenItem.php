@@ -1,5 +1,4 @@
 <?php
-include_once './DAO/ProductDAO.php';
 
 class WinkelwagenItem {
     private $aantal;

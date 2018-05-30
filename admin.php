@@ -14,7 +14,7 @@
 <div class="banner"></div>
 <nav class="navbar">
     <ul>
-        <li><a class="active" href="#">Home</a></li>
+        <li><a class="home" href="index.php">Home</a></li>
         <li><a href="winkelwagen.php">Winkelwagen</a></li>
         <li><a href="#">About</a></li>
         <li><a href="admin.php">Admin</a></li>

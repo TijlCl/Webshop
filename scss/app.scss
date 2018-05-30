@@ -21,3 +21,21 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+button {
+  background-color: green;
+  color: white;
+  border: none;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  margin-left: 10px;
+}
+
+button:hover {
+  background-color: #4CAF50; /* Green */
+  color: white;
+}
+
+input {
+  border: none;
+}

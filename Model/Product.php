@@ -66,5 +66,13 @@ class Product {
         $this->locatieFoto = $locatieFoto;
     }
 
+    public function getBtw() {
+        return $this->prijsExclBtw * $this->btwPercentage / 100;
+    }
+
+    public function getPrijsInclBtw() {
+        return $this->prijsExclBtw + $this->getBtw();
+    }
+
     //Extra functionaliteit kan je hier schrijven
 }
