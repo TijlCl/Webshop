@@ -28,20 +28,24 @@
                 <th>Naam</th>
                 <th>foto</th>
                 <th>Omschrijving</th>
-                <th>prijs incl BTW</th>
-                <th>Prijs excl BTW</th>
+                <th>prijs excl BTW</th>
+                <th>Prijs incl BTW</th>
                 <th>Aantal</th>
                 <th>Verwijder</th>
             </tr>
+            <?php
+            include_once 'DAO/ProductDAO.php';
+            foreach (ProductDAO::getAll() as $product) { ?>
             <tr>
-                <td>craterhoof behemoth</td>
-                <td><img src="img/craterhoof.jpg" height="50" width="35"></td>
-                <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</td>
-                <td>4,34</td>
+                <td><?php echo $product->getNaam(); ?></td>
+                <td><img src="<?php echo $product->getLocatieFoto(); ?>" height="50" width="35"></td>
+                <td><?php echo $product->getBeschrijving(); ?></td>
+                <td><?php echo $product->getPrijsExclBtw(); ?></td>
                 <td>5</td>
                 <td><input type="number" id="myNumber"></td>
                 <td><button>Verwijder</button></td>
             </tr>
+            <?php } ?>
         </table>
         <a href="producttoevoegen.php"><button>Product Toevoegen</button></a>
     </div>

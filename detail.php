@@ -22,11 +22,13 @@
 </nav>
 
 <div class="content">
-    <h1>Kaartnaam</h1>
-    <img class="col-xs-3" src="img/craterhoof.jpg" width="223" height="310">
-    <p class="col-xs-9">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    <?php include_once 'DAO/ProductDAO.php';
+    $productdetail = ProductDAO::getById($_GET['q']) ?>
+    <h1><?php echo $productdetail->getNaam(); ?></h1>
+    <img class="col-xs-3" src="<?php echo $productdetail->getLocatieFoto(); ?>" width="223" height="310">
+    <p class="col-xs-9"><?php echo $productdetail->getBeschrijving(); ?></p>
     <p class="col-xs-9">incl</p>
-    <p class="col-xs-9">excl</p>
+    <p class="col-xs-9"><?php echo $productdetail->getPrijsExclBtw(); ?></p>
     <button>Add to cart</button>
 </div>
 </body>

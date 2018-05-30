@@ -1,6 +1,3 @@
-<?php
- // something
-?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -23,70 +20,22 @@
 
     <div class="content">
         <section class="table row">
-            <div class="card-block col-xs-3">
-                <a href="detail.php"><img src="img/craterhoof.jpg" width="223" height="310"></a>
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
+            <?php
+        include_once 'DAO/ProductDAO.php';
+            foreach (ProductDAO::getAll() as $product) { ?>
+                <div class="card-block col-xs-3">
+                    <a href="detail.php?q=<?php echo $product->getProductId(); ?>"><img src="<?php echo $product->getLocatieFoto(); ?>" width="223" height="310"></a>
+                    <div class="row">
+                        <p class="col-xs-7"><?php echo $product->getNaam(); ?></p>
+                        <p class="col-xs-3">$<?php echo $product->getPrijsExclBtw(); ?></p>
+                    </div>
+                    <form action="voegToeAanWinkelwagen.php" method="POST">
+                        <button type="submit">Toevoegen aan winkelmandje</button>
+                        <input name="aantal" type="number" min="0" value="1">
+                        <input type="hidden" name="productId" value="<?php echo $product->getProductId(); ?>">
+                    </form>
                 </div>
-                <button>Add to cart</button>
-            </div>
-            <div class="card-block col-xs-3">
-                <img src="img/craterhoof.jpg" width="223" height="310">
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
-                </div>
-                <button>Add to cart</button>
-            </div>
-            <div class="card-block col-xs-3">
-                <img src="img/craterhoof.jpg" width="223" height="310">
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
-                </div>
-                <button>Add to cart</button>
-            </div>
-            <div class="card-block col-xs-3">
-                <img src="img/craterhoof.jpg" width="223" height="310">
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
-                </div>
-                <button>Add to cart</button>
-            </div>
-            <div class="card-block col-xs-3">
-                <img src="img/craterhoof.jpg" width="223" height="310">
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
-                </div>
-                <button>Add to cart</button>
-            </div>
-            <div class="card-block col-xs-3">
-                <img src="img/craterhoof.jpg" width="223" height="310">
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
-                </div>
-                <button>Add to cart</button>
-            </div>
-            <div class="card-block col-xs-3">
-                <img src="img/craterhoof.jpg" width="223" height="310">
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
-                </div>
-                <button>Add to cart</button>
-            </div>
-            <div class="card-block col-xs-3">
-                <img src="img/craterhoof.jpg" width="223" height="310">
-                <div class="row">
-                    <p class="col-xs-7">Kaartnaam</p>
-                    <p class="col-xs-3">Prijs</p>
-                </div>
-                <button>Add to cart</button>
-            </div>
+          <?php } ?>
         </section>
     </div>
 </body>
