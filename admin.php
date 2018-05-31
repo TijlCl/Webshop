@@ -31,6 +31,7 @@
                 <th>prijs excl BTW</th>
                 <th>Prijs incl BTW</th>
                 <th>Aantal</th>
+                <th>Pas aan</th>
                 <th>Verwijder</th>
             </tr>
             <?php
@@ -43,6 +44,7 @@
                 <td><?php echo $product->getPrijsExclBtw(); ?></td>
                 <td>5</td>
                 <td><input type="number" id="myNumber"></td>
+                <td><a href="productUpdaten.php?q=<?php echo $product->getProductId(); ?>"><button>Pas product aan</button></a></td>
                 <td><button>Verwijder</button></td>
             </tr>
             <?php } ?>

@@ -58,9 +58,9 @@ class ProductDAO {
 //        return self::deleteById($persoon->getPersoonId());
 //    }
 
-//    public static function update($persoon) {
-//        return self::getVerbinding()->voerSqlQueryUit("UPDATE Persoon SET voornaam='?',achternaam='?' WHERE persoonId=?", array($persoon->getVoornaam(), $persoon->getAchternaam(), $persoon->getPersoonId()));
-//    }
+    public static function update($product) {
+        return self::getVerbinding()->voerSqlQueryUit("UPDATE Product SET naam='?',beschrijving='?',btwPercentage='?',prijsExclBtw='?',locatieFoto='?' WHERE productId=?", array($product->getNaam(), $product->getBeschrijving(), $product->getBtwPercentage(), $product->getPrijsExclBtw(), $product->getLocatieFoto(), $product->getProductId()));
+    }
 
     protected static function converteerRijNaarObject($databaseRij) {
         return new Product($databaseRij['productId'], $databaseRij['naam'], $databaseRij['beschrijving'], $databaseRij['btwPercentage'], $databaseRij['prijsExclBtw'], $databaseRij['locatieFoto']);
