@@ -43,7 +43,7 @@ class ProductDAO {
     }
 
     public static function voegToe($product) {
-        return self::getVerbinding()->voerSqlQueryUit("INSERT INTO Product(naam, beschrijving, btwPercentage, prijsExclBtw, locatieFoto) VALUES ('?','?','?','?','?')", array($product->getNaam(), $product->getBeschrijving(), $product->getBtwPercentage(), $product->getPrijsExclBtw(), $product->getLocatieFoto()));
+        return self::getVerbinding()->voerSqlQueryUit("INSERT INTO Product(naam, beschrijving, btwPercentage, prijsExclBtw, locatieFoto, stock) VALUES ('?','?','?','?','?','?')", array($product->getNaam(), $product->getBeschrijving(), $product->getBtwPercentage(), $product->getPrijsExclBtw(), $product->getLocatieFoto(), $product->getStock()));
     }
 
 
@@ -53,11 +53,15 @@ class ProductDAO {
 
 
     public static function update($product) {
-        return self::getVerbinding()->voerSqlQueryUit("UPDATE Product SET naam='?',beschrijving='?',btwPercentage='?',prijsExclBtw='?',locatieFoto='?' WHERE productId=?", array($product->getNaam(), $product->getBeschrijving(), $product->getBtwPercentage(), $product->getPrijsExclBtw(), $product->getLocatieFoto(), $product->getProductId()));
+        return self::getVerbinding()->voerSqlQueryUit("UPDATE Product SET naam='?',beschrijving='?',btwPercentage='?',prijsExclBtw='?',locatieFoto='?', stock='?' WHERE productId=?", array($product->getNaam(), $product->getBeschrijving(), $product->getBtwPercentage(), $product->getPrijsExclBtw(), $product->getLocatieFoto(), $product->getStock(), $product->getProductId()));
+    }
+
+    public static function updateStock($product) {
+        return self::getVerbinding()->voerSqlQueryUit("UPDATE Product SET stock='?' WHERE productId=?", array($product->getStock(), $product->getProductId()));
     }
 
     protected static function converteerRijNaarObject($databaseRij) {
-        return new Product($databaseRij['productId'], $databaseRij['naam'], $databaseRij['beschrijving'], $databaseRij['btwPercentage'], $databaseRij['prijsExclBtw'], $databaseRij['locatieFoto']);
+        return new Product($databaseRij['productId'], $databaseRij['naam'], $databaseRij['beschrijving'], $databaseRij['btwPercentage'], $databaseRij['prijsExclBtw'], $databaseRij['locatieFoto'], $databaseRij['stock']);
     }
 
 }

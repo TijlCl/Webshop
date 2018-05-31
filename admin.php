@@ -44,7 +44,7 @@ session_start();
                 <th>Omschrijving</th>
                 <th>prijs excl BTW</th>
                 <th>Prijs incl BTW</th>
-                <th>Aantal</th>
+                <th>Aantal In Stock</th>
                 <th>Pas aan</th>
                 <th>Verwijder</th>
             </tr>
@@ -56,8 +56,13 @@ session_start();
                 <td><img src="<?php echo $product->getLocatieFoto(); ?>" height="50" width="35"></td>
                 <td><?php echo $product->getBeschrijving(); ?></td>
                 <td><?php echo $product->getPrijsExclBtw(); ?></td>
-                <td>5</td>
-                <td><input type="number" id="myNumber"></td>
+                <td><?php echo $product->getPrijsInclBtw(); ?></td>
+                <td>
+                    <form action="updateStock.php" method="POST">
+                        <input onchange="this.form.submit()" name="aantal" type="number" value="<?php echo $product->getStock(); ?>">
+                        <input type="hidden" name="product" value="<?php echo $product->getProductId(); ?>">
+                    </form>
+                </td>
                 <td><a href="productUpdaten.php?q=<?php echo $product->getProductId(); ?>"><button>Pas product aan</button></a></td>
                 <td>
                     <form action="delete.php" method="POST">

@@ -41,7 +41,7 @@ include_once("Ingenico.php");
     <h2>Bevestigt u deze betaling met een bedrag van € <?php echo intval($_POST["bedrag"]) / 100; ?>?</h2>
     <?php
     $mijnBetaling = Ingenico::genereerNieuweBetaling(intval($_POST["bedrag"]));
-    $mijnBetaling->setAfhandelingBetalingGeaccepteerdUrl("Location:betalingSucces.php");
+    $mijnBetaling->setAfhandelingBetalingGeaccepteerdUrl("Location:index.php");
     $mijnBetaling->genereerBetalingsformulier();
     ?>
 </div>

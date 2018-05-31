@@ -12,6 +12,6 @@ if (isset($_POST["postcheck"])) {
         }
     }
     if (!isset($_SESSION['loggedin']) || $_SESSION["loggedin"] == false) {
-        header('Location:login.php');
+        header('Location:login.php?incorrect=true');
     }
 }

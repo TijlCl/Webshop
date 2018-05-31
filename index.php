@@ -43,9 +43,10 @@ session_start();
                 <div class="card-block col-xs-4">
                     <a href="detail.php?q=<?php echo $product->getProductId(); ?>"><img src="<?php echo $product->getLocatieFoto(); ?>"></a>
                     <p class="col-xs-12"><?php echo $product->getNaam(); ?></p>
-                    <p class="col-xs-12">$<?php echo $product->getPrijsInclBtw(); ?></p>
+                    <p class="col-xs-12">€<?php echo $product->getPrijsInclBtw(); ?></p>
+                    <p class="col-xs-12">Aantal is stock: <?php echo $product->getStock(); ?></p>
                     <form class="col-xs-12" action="voegToeAanWinkelwagen.php" method="POST">
-                        <input class="col-xs-4" name="aantal" type="number" min="0" value="1">
+                        <input class="col-xs-4" name="aantal" type="number" min="0" max="<?php echo $product->getStock(); ?>" value="1">
                         <input type="hidden" name="productId" value="<?php echo $product->getProductId(); ?>">
                         <button class="col-xs-8" type="submit">In winkelmand!</button>
                     </form>

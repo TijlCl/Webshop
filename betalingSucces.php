@@ -36,8 +36,7 @@ session_start();
 </nav>
 
 <div class="content">
-    <h1>Betaling</h1>
-    <h2>De Betaling is Geslaagd!</h2>
+    <h1>De Betaling is Geslaagd!</h1>
 
 </div>
 </body>

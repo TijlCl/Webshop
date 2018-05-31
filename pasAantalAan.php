@@ -12,5 +12,5 @@ if (intval($_POST["aantal"]) == 1) {
     echo $aantal;
 }
 
-WinkelwagenDao::vermeerderAantalItems2($winkelwagenitem);
+WinkelwagenDao::vermeerderAantalItems($winkelwagenitem);
 

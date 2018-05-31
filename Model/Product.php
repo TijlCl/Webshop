@@ -8,6 +8,7 @@ class Product {
     private $btwPercentage;
     private $prijsExclBtw;
     private $locatieFoto;
+    private $stock;
 
     public function getProductId() {
         return $this->productId;
@@ -31,6 +32,10 @@ class Product {
 
     public function getLocatieFoto() {
         return $this->locatieFoto;
+    }
+
+    public function getStock() {
+        return $this->stock;
     }
 
     public function setProductId($productId) {
@@ -57,13 +62,18 @@ class Product {
         $this->locatieFoto = $locatieFoto;
     }
 
-    public function __construct($productId, $naam, $beschrijving, $btwPercentage, $prijsExclBtw, $locatieFoto) {
+    public function setStock($stock) {
+        $this->stock = $stock;
+    }
+
+    public function __construct($productId, $naam, $beschrijving, $btwPercentage, $prijsExclBtw, $locatieFoto, $stock) {
         $this->productId = $productId;
         $this->naam = $naam;
         $this->beschrijving = $beschrijving;
         $this->btwPercentage = $btwPercentage;
         $this->prijsExclBtw = $prijsExclBtw;
         $this->locatieFoto = $locatieFoto;
+        $this->stock = $stock;
     }
 
     public function getBtw() {

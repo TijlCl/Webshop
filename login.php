@@ -1,5 +1,6 @@
 <?php
 session_start();
+$incorrectUser = '';
 ?>
 <html lang="en">
 <head>
@@ -39,6 +40,10 @@ session_start();
     <div class="product-toevoegen">
         <form class="fields" action="checkUser.php" method="POST">
             <h2 align="center";>Log In</h2>
+            <?php if($_GET['incorrect'] == true) {
+                $incorrectUser = "Gerbuikersnaam of paswoord is niet correct";
+            } ?>
+            <p align="center"><?php echo $incorrectUser; ?></p>
             Gebruikersnaam:
             <input class="form-control" type="text" name="gerbuikersnaam">
 

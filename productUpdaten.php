@@ -6,15 +6,15 @@ include_once './validatie.php';
 
 $toonFormulier = true;
 $selectedImage = "";
-$naamVal = $beschrijvingVal = $prijsExclBtwVal = $btwPercentageVal = $typeVal = "";
-$naamErr = $prijsExclBtwErr = $btwPercentageErr = $beschrijvingErr = "";
+$naamVal = $beschrijvingVal = $prijsExclBtwVal = $btwPercentageVal = $typeVal = $stockVal = "";
+$naamErr = $prijsExclBtwErr = $btwPercentageErr = $beschrijvingErr = $stockErr = "";
 
 if (isFormulierIngediend()) {
     $naamErr = errRequiredVeld("naam");
     $btwPercentageErr = errBtw("btwPercentage");
     $prijsExclBtwErr = errVoegMeldingToe(errRequiredVeld("prijsExclBtw"), errVeldIsNumeriek("prijsExclBtw"));
     $beschrijvingErr = errRequiredVeld("beschrijving");
-
+    $stockErr = errRequiredVeld("stock");
 
     if (isFormulierValid()) {
         $toonFormulier = false;
@@ -65,6 +65,7 @@ if (isFormulierIngediend()) {
                 $productToUpdate->setBtwPercentage($_POST["btwPercentage"]);
                 $productToUpdate->setPrijsExclBtw($_POST["prijsExclBtw"]);
                 $productToUpdate->setLocatieFoto($selectedImage);
+                $productToUpdate->setStock($_POST["stock"]);
                 ProductDao::update($productToUpdate);
     } else {
         //Toon formulierpagina met eventuele feedbackvelden (err-velden)
@@ -74,6 +75,7 @@ if (isFormulierIngediend()) {
         $beschrijvingVal = getVeldWaarde("beschrijving");
         $prijsExclBtwVal = getVeldWaarde("prijsExclBtw");
         $btwPercentageVal = getVeldWaarde("btwPercentage");
+        $stockVal = getVeldWaarde("stock");
 
     }
 }
@@ -83,8 +85,8 @@ function isFormulierIngediend() {
 }
 
 function isFormulierValid() {
-    global $naamErr, $prijsExclBtwErr, $btwPercentageErr, $beschrijvingErr;
-    $allErr = $naamErr . $prijsExclBtwErr . $btwPercentageErr . $beschrijvingErr;
+    global $naamErr, $prijsExclBtwErr, $btwPercentageErr, $beschrijvingErr, $stockErr;
+    $allErr = $naamErr . $prijsExclBtwErr . $btwPercentageErr . $beschrijvingErr . $stockErr;
     if (empty($allErr)) {
         //Formulier is valid
         return true;
@@ -101,7 +103,7 @@ if ($toonFormulier) {
         <title>Webshop</title>
         <link rel="stylesheet" href="css/app.css?">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
 
     <body>
@@ -140,6 +142,10 @@ if ($toonFormulier) {
                 Prijs Excl BTW:
                 <input class="form-control" type="text" name="prijsExclBtw" value="<?php echo $productToUpdate->getPrijsExclBtw(); ?>"><br>
                 <label><?php echo $prijsExclBtwErr; ?></label><br>
+
+                Aantal in stock:
+                <input class="form-control" type="text" name="stock" value="<?php echo $productToUpdate->getStock(); ?>"><br>
+                <label><?php echo $stockErr; ?></label><br>
 
                 Btw Percentage:
                 <input class="form-control" type="text" name="btwPercentage" value="<?php echo $productToUpdate->getBtwPercentage(); ?>"><br>

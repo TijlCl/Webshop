@@ -6,8 +6,8 @@ include_once './validatie.php';
 
 $toonFormulier = true;
 
-$naamVal = $beschrijvingVal = $prijsExclBtwVal = $btwPercentageVal = $typeVal = "";
-$fotoErr = $naamErr = $prijsExclBtwErr = $btwPercentageErr = $beschrijvingErr = "";
+$naamVal = $beschrijvingVal = $prijsExclBtwVal = $btwPercentageVal = $typeVal = $stockVal = "";
+$fotoErr = $naamErr = $prijsExclBtwErr = $btwPercentageErr = $beschrijvingErr = $stockErr = "";
 
 if (isFormulierIngediend()) {
     $naamErr = errRequiredVeld("naam");
@@ -15,6 +15,7 @@ if (isFormulierIngediend()) {
     $prijsExclBtwErr = errVoegMeldingToe(errRequiredVeld("prijsExclBtw"), errVeldIsNumeriek("prijsExclBtw"));
     $beschrijvingErr = errRequiredVeld("beschrijving");
     $fotoErr = errFoto("bestand");
+    $stockErr = errRequiredVeld("stock");
 
     if (isFormulierValid()) {
         $toonFormulier = false;
@@ -56,7 +57,7 @@ if (isFormulierIngediend()) {
                 <h1>Het product is toegevoegd!</h1>
                 <?php
                     $selectedImage = "img/" . $_FILES["bestand"]["name"];
-                    $newProduct = new Product(0, $_POST["naam"], $_POST["beschrijving"], $_POST["btwPercentage"], $_POST["prijsExclBtw"], $selectedImage);
+                    $newProduct = new Product(0, $_POST["naam"], $_POST["beschrijving"], $_POST["btwPercentage"], $_POST["prijsExclBtw"], $selectedImage, $_POST["stock"]);
                     ProductDao::voegToe($newProduct);
     } else {
         //Toon formulierpagina met eventuele feedbackvelden (err-velden)
@@ -66,6 +67,7 @@ if (isFormulierIngediend()) {
         $beschrijvingVal = getVeldWaarde("beschrijving");
         $prijsExclBtwVal = getVeldWaarde("prijsExclBtw");
         $btwPercentageVal = getVeldWaarde("btwPercentage");
+        $stockVal = getVeldWaarde("stock");
 
     }
 }
@@ -75,8 +77,8 @@ function isFormulierIngediend() {
 }
 
 function isFormulierValid() {
-    global $fotoErr, $naamErr, $prijsExclBtwErr, $btwPercentageErr, $beschrijvingErr;
-    $allErr = $fotoErr . $naamErr . $prijsExclBtwErr . $btwPercentageErr . $beschrijvingErr;
+    global $fotoErr, $naamErr, $prijsExclBtwErr, $btwPercentageErr, $beschrijvingErr, $stockErr;
+    $allErr = $fotoErr . $naamErr . $prijsExclBtwErr . $btwPercentageErr . $beschrijvingErr . $stockErr;
     if (empty($allErr)) {
         //Formulier is valid
         return true;
@@ -131,6 +133,10 @@ if ($toonFormulier) {
                 Prijs Excl BTW:
                 <input class="form-control" type="text" name="prijsExclBtw" value="<?php echo $prijsExclBtwVal ?>"><br>
                 <label><?php echo $prijsExclBtwErr; ?></label><br>
+
+                Aantal in stock:
+                <input class="form-control" type="text" name="stock" value="<?php echo $stockVal ?>"><br>
+                <label><?php echo $stockErr; ?></label><br>
 
                 Btw Percentage:
                 <input class="form-control" type="text" name="btwPercentage" value="<?php echo $btwPercentageVal; ?>"><br>
