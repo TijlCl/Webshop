@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'Dao/ProductDao.php';
 include_once 'Model/Product.php';
 include_once './validatie.php';
@@ -6,14 +7,14 @@ include_once './validatie.php';
 $toonFormulier = true;
 $selectedImage = "";
 $naamVal = $beschrijvingVal = $prijsExclBtwVal = $btwPercentageVal = $typeVal = "";
-$fotoErr = $naamErr = $prijsExclBtwErr = $btwPercentageErr = $beschrijvingErr = "";
+$naamErr = $prijsExclBtwErr = $btwPercentageErr = $beschrijvingErr = "";
 
 if (isFormulierIngediend()) {
     $naamErr = errRequiredVeld("naam");
     $btwPercentageErr = errBtw("btwPercentage");
     $prijsExclBtwErr = errVoegMeldingToe(errRequiredVeld("prijsExclBtw"), errVeldIsNumeriek("prijsExclBtw"));
     $beschrijvingErr = errRequiredVeld("beschrijving");
-    $fotoErr = errFoto("bestand");
+
 
     if (isFormulierValid()) {
         $toonFormulier = false;
@@ -33,8 +34,21 @@ if (isFormulierIngediend()) {
                 <ul>
                     <li><a class="home" href="index.php">Home</a></li>
                     <li><a href="winkelwagen.php">Winkelwagen</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="admin.php">Admin</a></li>
+                    <?php
+                    if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                        ?><li><a href="admin.php">Admin</a></li>
+                        <li><a href="logout.php">Log out</a></li>
+                        <?php
+                    } else {
+                        ?><li><a href="login.php">Log In</a></li><?php
+                    }
+                    ?>
+                    <div class="search-container">
+                        <form action="searchResult.php?=<?php echo $_GET['search']; ?>">
+                            <input type="text" placeholder="Search.." name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
                 </ul>
             </nav>
 
@@ -69,8 +83,8 @@ function isFormulierIngediend() {
 }
 
 function isFormulierValid() {
-    global $fotoErr, $naamErr, $prijsExclBtwErr, $btwPercentageErr, $beschrijvingErr;
-    $allErr = $fotoErr . $naamErr . $prijsExclBtwErr . $btwPercentageErr . $beschrijvingErr;
+    global $naamErr, $prijsExclBtwErr, $btwPercentageErr, $beschrijvingErr;
+    $allErr = $naamErr . $prijsExclBtwErr . $btwPercentageErr . $beschrijvingErr;
     if (empty($allErr)) {
         //Formulier is valid
         return true;
@@ -87,6 +101,7 @@ if ($toonFormulier) {
         <title>Webshop</title>
         <link rel="stylesheet" href="css/app.css?">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
     <body>
@@ -95,8 +110,21 @@ if ($toonFormulier) {
         <ul>
             <li><a class="home" href="index.php">Home</a></li>
             <li><a href="winkelwagen.php">Winkelwagen</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="admin.php">Admin</a></li>
+            <?php
+            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
+                ?><li><a href="admin.php">Admin</a></li>
+                <li><a href="logout.php">Log out</a></li>
+                <?php
+            } else {
+                ?><li><a href="login.php">Log In</a></li><?php
+            }
+            ?>
+            <div class="search-container">
+                <form action="searchResult.php?=<?php echo $_GET['search']; ?>">
+                    <input type="text" placeholder="Search.." name="search">
+                    <button type="submit"><i class="fa fa-search"></i></button>
+                </form>
+            </div>
         </ul>
     </nav>
 
@@ -124,7 +152,6 @@ if ($toonFormulier) {
                 <p>Momenteel gebruikt als file voor dit product: <?php echo $productToUpdate->getLocatieFoto(); ?></p>
                 <p>Klik op "Choose file" om deze te veranderen</p>
                 <input class="button" type="file" name="bestand"><br>
-                <label><?php echo $fotoErr; ?></label><br>
 
                 <div class="button">
                     <input type="hidden" name="postcheck" value="true"/>

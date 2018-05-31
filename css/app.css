@@ -9,6 +9,7 @@
   margin: 0;
   padding: 0;
   padding-left: 10vw;
+  padding-right: 10vw;
   overflow: hidden;
   background-color: #333;
 }
@@ -27,6 +28,29 @@
 }
 .navbar .home {
   background-color: green;
+}
+.navbar .search-container {
+  float: right;
+}
+.navbar .search-container input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+.navbar .search-container button {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  height: 36px;
+}
+.navbar .search-container form {
+  margin: 0;
 }
 
 .table .card-block {

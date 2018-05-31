@@ -36,19 +36,21 @@ session_start();
 </nav>
 
 <div class="content">
-    <?php include_once 'DAO/ProductDAO.php';
-    $productdetail = ProductDAO::getById($_GET['q']) ?>
-    <h1><?php echo $productdetail->getNaam(); ?></h1>
-    <img class="col-xs-3" src="<?php echo $productdetail->getLocatieFoto(); ?>" width="223" height="310">
-    <p class="col-xs-9"><?php echo $productdetail->getBeschrijving(); ?></p>
-    <p class="col-xs-9">Prijs Excl BTW <?php echo '&euro; ' . $productdetail->getPrijsExclBtw(); ?></p>
-    <p class="col-xs-9">Totale BTW <?php echo '&euro; ' . $productdetail->getBtw(); ?></p>
-    <p class="col-xs-9">Prijs Incl BTW <?php echo '&euro; ' . $productdetail->getPrijsInclBtw(); ?></p>
-    <form class="col-xs-8" action="voegToeAanWinkelwagen.php" method="POST">
-        <input class="col-xs-1" name="aantal" type="number" min="0" value="1">
-        <input type="hidden" name="productId" value="<?php echo $productdetail->getProductId(); ?>">
-        <button class="col-xs-3" type="submit">In winkelmand!</button>
-    </form>
+    <div class="product-toevoegen">
+        <form class="fields" action="checkUser.php" method="POST">
+            <h2 align="center";>Log In</h2>
+            Gebruikersnaam:
+            <input class="form-control" type="text" name="gerbuikersnaam">
+
+            Passwoord:
+            <input class="form-control" type="password" name="passwoord">
+
+            <div class="button">
+                <input type="hidden" name="postcheck" value="true"/>
+                <input type="submit" value="Login">
+            </div>
+        </form>
+    </div>
 </div>
 </body>
 </html>
