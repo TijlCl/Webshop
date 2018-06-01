@@ -26,7 +26,7 @@
 .navbar li a:hover:not(.active) {
   background-color: #111;
 }
-.navbar .home {
+.navbar .active {
   background-color: green;
 }
 .navbar .search-container {

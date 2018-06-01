@@ -16,7 +16,7 @@ $incorrectUser = '';
 <div class="banner"></div>
 <nav class="navbar">
     <ul>
-        <li><a class="home" href="index.php">Home</a></li>
+        <li><a href="index.php">Home</a></li>
         <li><a href="winkelwagen.php">Winkelwagen</a></li>
         <?php
         if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
@@ -24,7 +24,7 @@ $incorrectUser = '';
             <li><a href="logout.php">Log out</a></li>
             <?php
         } else {
-            ?><li><a href="login.php">Log In</a></li><?php
+            ?><li><a class="active" href="login.php">Log In</a></li><?php
         }
         ?>
         <div class="search-container">

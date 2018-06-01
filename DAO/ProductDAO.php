@@ -1,7 +1,7 @@
 <?php
 //Kopieer deze template en pas deze aan naargelang de benodigde functionaliteit
-include_once '../Webshop/Model/Product.php';
-include_once '../Webshop/DAO/verbinding/DatabaseFactory.php';
+include_once 'Model/Product.php';
+include_once 'DAO/verbinding/DatabaseFactory.php';
 
 class ProductDAO {
 

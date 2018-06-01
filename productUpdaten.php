@@ -108,11 +108,11 @@ if ($toonFormulier) {
     <div class="banner"></div>
     <nav class="navbar">
         <ul>
-            <li><a class="home" href="index.php">Home</a></li>
+            <li><a href="index.php">Home</a></li>
             <li><a href="winkelwagen.php">Winkelwagen</a></li>
             <?php
             if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true) {
-                ?><li><a href="admin.php">Admin</a></li>
+                ?><li><a class="active" href="admin.php">Admin</a></li>
                 <li><a href="logout.php">Log out</a></li>
                 <?php
             } else {
