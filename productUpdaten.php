@@ -67,9 +67,8 @@ if (isFormulierIngediend()) {
                 $productToUpdate->setLocatieFoto($selectedImage);
                 $productToUpdate->setStock($_POST["stock"]);
                 ProductDao::update($productToUpdate);
+                move_uploaded_file($_FILES["bestand"]["tmp_name"], __DIR__."/img/" . $_FILES["bestand"]["name"]);
     } else {
-        //Toon formulierpagina met eventuele feedbackvelden (err-velden)
-        //Eventueel kan je ervoor zorgen dat foutief ingevulde waarden terug worden afgeprint in het formulier
 
         $naamVal = getVeldWaarde("naam");
         $beschrijvingVal = getVeldWaarde("beschrijving");
@@ -88,7 +87,6 @@ function isFormulierValid() {
     global $naamErr, $prijsExclBtwErr, $btwPercentageErr, $beschrijvingErr, $stockErr;
     $allErr = $naamErr . $prijsExclBtwErr . $btwPercentageErr . $beschrijvingErr . $stockErr;
     if (empty($allErr)) {
-        //Formulier is valid
         return true;
     } else {
         return false;

@@ -11,7 +11,7 @@ class WinkelwagenDao {
             return $winkelwagenItems;
         }
     }
-    public static function vermeerderAantalItems2($winkelwagenItem) {
+    public static function veranderAantalItems($winkelwagenItem) {
         $winkelwagenItems = self::getWinkelwagenItems();
         $bool = false;
 
@@ -29,7 +29,7 @@ class WinkelwagenDao {
         }
 
     }
-    public static function vermeerderAantalItems($winkelwagenItem) {
+    public static function voegItemToeAanWinkelwagen($winkelwagenItem) {
         $winkelwagenItems = self::getWinkelwagenItems();
         $bool = false;
 
@@ -45,10 +45,6 @@ class WinkelwagenDao {
             $cookie = serialize($winkelwagenItems);
             setcookie('winkelwagen', $cookie);
         }
-
-    }
-
-    public static function verminderAantalItems($winkelwagenItem) {
 
     }
 

@@ -14,16 +14,8 @@ function isVeldGroterDan($naamVeld, $waarde) {
     return (getVeldWaarde($naamVeld) > $waarde);
 }
 
-function isVeldKleinerDanOfGekijkAan($naamVeld, $waarde) {
-    return (getVeldWaarde($naamVeld) <= $waarde);
-}
-
 function isVeldNumeriek($naamVeld) {
     return is_numeric(getVeldWaarde($naamVeld));
-}
-
-function isVeldTekst($naamVeld) {
-    return !is_numeric(getVeldWaarde($naamVeld));
 }
 
 //Error message generatie
@@ -35,14 +27,6 @@ function errRequiredVeld($naamVeld) {
     }
 }
 
-function errVeldisTekst($naamVeld) {
-    if (isVeldLeeg($naamVeld)) {
-        return "";
-    } else {
-        return "Gelieve geen cijfers in te vullen";
-    }
-}
-
 function errVeldMoetGroterDanWaarde($naamVeld, $waarde) {
     if (isVeldGroterDan($naamVeld, $waarde)) {
         return "";
@@ -51,29 +35,11 @@ function errVeldMoetGroterDanWaarde($naamVeld, $waarde) {
     }
 }
 
-function errVeldMoetKleinerDanOfGelijkAanWaarde($naamVeld, $waarde) {
-    if (isVeldKleinerDanOfGekijkAan($naamVeld, $waarde)) {
-        return "";
-    } else {
-        return "Waarde moet kleiner of gelijk zijn aan " . $waarde . ".";
-    }
-}
-
-
-
 function errVeldIsNumeriek($naamVeld) {
     if (isVeldNumeriek($naamVeld)) {
         return "";
     } else {
         return "Waarde moet numeriek zijn";
-    }
-}
-
-function errVeldIsDag($naamVeld) {
-    if ($naamVeld > 0 && $naamVeld <= 31) {
-        return "";
-    } else {
-        return "Geef een waarde tussen de 0 en 31 in";
     }
 }
 
